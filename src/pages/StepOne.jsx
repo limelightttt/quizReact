@@ -23,19 +23,14 @@ const StepOne = () => {
             </div>
           </div>
           <div className="question">
-            <Header text="Добро пожаловать в квиз от лучшего учебного центра"/>
-            <AppLabel labelPlaceholder="Ваш ответ" errorText="Введите номер в правильном формате например"/>
-            {/* <label className="input-wrapper">
-              <input
-                required
-                type="text"
-                name="answer"
-                placeholder="Ваш ответ"
-              />
-              <span id="error-message">
-                Введите номер в правильном формате например
-              </span>
-            </label> */}
+            <Header headerType=""h2 headerText="1. Занимательный вопрос"/>
+            <AppLabel
+              errorText="Введите Имя в правильном формате"
+              labelId="answer"
+              labelPlaceholder="Ваш ответ"
+              // labelValue={userName}
+              // labelChange={}
+            />
             <AppButton btnText="Далее" isDisabled={true} btnType="submit"/>
           </div>
         </div>
