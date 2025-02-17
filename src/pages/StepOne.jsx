@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { AppButton } from "../components/AppButton";
 import { AppLabel } from "../components/AppLabel";
 
 const StepOne = () => {
+  const [textAnswer, setTextAnswer] = useState ("");
+  const [isDisabledButton, setIsDisabledButton] = useState (true);
+  useEffect(() => {
+    if (textAnswer) {
+      setIsDisabledButton(false)
+    } else {
+      setIsDisabledButton(true)
+    }
+  },[textAnswer])
   return (
     <div className="container">
       <div className="wrapper">
@@ -28,10 +37,10 @@ const StepOne = () => {
               errorText="Введите Имя в правильном формате"
               labelId="answer"
               labelPlaceholder="Ваш ответ"
-              // labelValue={userName}
-              // labelChange={}
+              labelValue={textAnswer}
+              labelChange={setTextAnswer}
             />
-            <AppButton btnText="Далее" isDisabled={true} btnType="submit"/>
+            <AppButton btnText="Далее" isDisabled={isDisabledButton} btnType="submit"/>
           </div>
         </div>
       </div>
