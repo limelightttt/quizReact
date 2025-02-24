@@ -1,26 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ProgressBar } from "../components/ProgressBar";
+import { AppButton } from "../components/AppButton";
+import { Header } from "../components/Header";
 
 const StepTwo = () => {
+  // const [isDisabledButton, setIsDisabledButton] = useState(true);
+  // const [selectedValue, setSelectedValue] = useState("");  
+
+  // useEffect(() => {
+  //   if (selectedValue) {
+  //     setIsDisabledButton(false);
+  //   } else {
+  //     setIsDisabledButton(true);
+  //   }
+  // }, [selectedValue]);
   return (
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <ProgressBar currentStep={2}/>
           <div className="question">
-            <h2>1. Занимательный вопрос</h2>
+            <Header headerType="h2" headerText="1. Занимательный вопрос" />
             <ul className="variants">
               <li className="variant-wrapper">
                 <input required type="radio" name="variant-1" id="variant-1" />
@@ -39,9 +39,12 @@ const StepTwo = () => {
                 <label htmlFor="variant-4">Ваш ответ</label>
               </li>
             </ul>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <AppButton
+              btnText="Далее"
+              isDisabled={false}
+              btnType="button"
+              // btnClick={handleClick}
+            />
           </div>
         </div>
       </div>

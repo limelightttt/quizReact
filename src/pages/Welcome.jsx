@@ -6,20 +6,44 @@ import { AppLabel } from "../components/AppLabel";
 const Welcome = () => {
   const [userName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
-  const [isDisabled,setIsDisabled] = useState(true);
-  useEffect(()=>{
-    if(userName && userPhone){
-      setIsDisabled(false)
-    } else {
-      setIsDisabled(true)
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [errorName, setErrorName] = useState(false);
+  const [errorPhone, setErrorPhone] = useState(false);
+
+  const RegexUser = /^[a-zA-Zа-яА-ЯёЁ\s]+$/;
+  const RegexPhone =
+    /^\+?\d{1,3}?[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+
+  const handleClick = () => {
+    if (!RegexUser.test(userName)) {
+      setErrorName(true);
     }
-  },[userName,userPhone])
+    if (!RegexPhone.test(userPhone)) {
+      setErrorPhone(true);
+    }
+    if (RegexUser.test(userName) && RegexPhone.test(userPhone)) {
+      setErrorPhone(false);
+      setErrorName(false);
+    }
+  };
+
+  useEffect(() => {
+    if (userName && userPhone) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [userName, userPhone]);
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="welcome">
-          <Header headerType=""h1 headerText="Добро пожаловать в квиз от лучшего учебного центра" />
+          <Header
+            headerType=""
+            h1
+            headerText="Добро пожаловать в квиз от лучшего учебного центра"
+          />
           <form className="welcome__form">
             <AppLabel
               errorText="Введите Имя в правильном формате"
@@ -27,7 +51,8 @@ const Welcome = () => {
               labelPlaceholder="Имя"
               labelText="Ваше имя"
               labelValue={userName}
-              labelChange={ setUserName}
+              labelChange={setUserName}
+              isError={errorName}
             />
             <AppLabel
               errorText="Введите номер в правильном формате"
@@ -35,9 +60,15 @@ const Welcome = () => {
               labelPlaceholder="+998 9- --- -- -- "
               labelText="Ваш номер"
               labelValue={userPhone}
-              labelChange={ setUserPhone}
+              labelChange={setUserPhone}
+              isError={errorPhone}
             />
-            <AppButton btnText="Далее" isDisabled={isDisabled} btnType="submit" />
+            <AppButton
+              btnText="Далее"
+              isDisabled={isDisabled}
+              btnType="button"
+              btnClick={() => handleClick()}
+            />
           </form>
         </div>
       </div>
