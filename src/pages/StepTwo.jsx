@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { AppButton } from "../components/AppButton";
 import { Header } from "../components/Header";
 import { AnswerItem } from "../components/AnswerItem";
+import { useNavigate } from "react-router-dom";
 
 const StepTwo = () => {
+  const selectCourseRef = useRef("");
+  const [isDisabled, setIsDisabled] = useState(true);
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    selectCourseRef.current = event.target.value;
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...userData, selectCourse: selectCourseRef.current })
+    );
+    setIsDisabled(!selectCourseRef.current);
+  };
+
   const course = [
     {
       id: "variant-1",
@@ -23,6 +39,7 @@ const StepTwo = () => {
       value: "UX/UI",
     },
   ];
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -35,16 +52,15 @@ const StepTwo = () => {
                 <AnswerItem
                   answerText={elem.value}
                   answerValue={elem.value}
+                  answerChange={handleClick}
                   id={elem.id}
                   key={elem.id}
                 />
               ))}
             </ul>
             <AppButton
-              btnText="Далее"
-              isDisabled={false}
-              btnType="button"
-              // btnClick={handleClick}
+              isDisabled={isDisabled}
+              btnClick={() => navigate("/step-three")}
             />
           </div>
         </div>

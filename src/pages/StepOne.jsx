@@ -56,9 +56,7 @@ const StepOne = () => {
               isError={errorAnswer}
             />
             <AppButton
-              btnText="Далее"
               isDisabled={isDisabledButton}
-              btnType="button"
               btnClick={() => handleClick()}
             />
           </div>

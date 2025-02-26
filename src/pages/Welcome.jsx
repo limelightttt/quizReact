@@ -81,9 +81,7 @@ const Welcome = () => {
               isError={errorPhone}
             />
             <AppButton
-              btnText="Далее"
               isDisabled={isDisabled}
-              btnType="button"
               btnClick={() => handleClick()}
             />
           </form>

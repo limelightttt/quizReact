@@ -1,59 +1,75 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { Header } from "../components/Header";
+import { ProgressBar } from "../components/ProgressBar";
+import { AppButton } from "../components/AppButton";
+import { AnswerItem } from "../components/AnswerItem";
+import { useNavigate } from "react-router-dom";
 
 const StepThree = () => {
+  const selectEmojiRef = useRef("");
+  const [isDisabled, setIsDisabled] = useState(true);
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    selectEmojiRef.current = event.target.value;
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...userData, selectEmoji: selectEmojiRef.current })
+    );
+    setIsDisabled(!selectEmojiRef.current);
+  };
+
+  const emoji = [
+    {
+      id: "variant-1",
+      value: "laugh",
+      text: "Ваш ответ 1",
+      photo: <img src="./img/laugh.png" alt="" />,
+    },
+    {
+      id: "variant-2",
+      value: "hearts",
+      text: "Ваш ответ 2",
+      photo: <img src="./img/hearts.png" alt="" />,
+    },
+    {
+      id: "variant-3",
+      value: "smirk",
+      text: "Ваш ответ 3",
+      photo: <img src="./img/smirk.png" alt="" />,
+    },
+    {
+      id: "variant-4",
+      value: "fright",
+      text: "Ваш ответ 4",
+      photo: <img src="./img/fright.png" alt="" />,
+    },
+  ];
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <ProgressBar currentStep={3} />
           <div className="question">
-            <h2>3. Занимательный вопрос</h2>
+            <Header headerText="Какой у вас характер ?" headerType="h2" />
             <ul className="emoji-variants">
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-1" />
-                <label htmlFor="variant-1">
-                  <img src="./img/laugh.png" alt="laugh" />
-                  <p>Ваш ответ 1</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-2" />
-                <label htmlFor="variant-2">
-                  <img src="./img/hearts.png" alt="hearts" />
-                  <p>Ваш ответ 2</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-3" />
-                <label htmlFor="variant-3">
-                  <img src="./img/smirk.png" alt="smirk" />
-                  <p>Ваш ответ 3</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-4" />
-                <label htmlFor="variant-4">
-                  <img src="./img/fright.png" alt="fright" />
-                  <p>Ваш ответ 4</p>
-                </label>
-              </li>
+              {emoji.map((elem) => (
+                <AnswerItem
+                  answerText={elem.photo}
+                  answerValue={elem.value}
+                  emojiText={elem.text}
+                  answerChange={handleClick}
+                  id={elem.id}
+                  key={elem.id}
+                />
+              ))}
             </ul>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <AppButton
+              isDisabled={isDisabled}
+              btnClick={() => navigate("/step-four")}
+            />
           </div>
         </div>
       </div>
