@@ -9,7 +9,7 @@
 
 body {
   font-family: "TT Hoves";
-  font-size: 16px;
+  font-size: 15px;
   height: 100vh;
   color: #22222a;
 }
@@ -20,7 +20,7 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 28px;
+  font-size: calc(0.6vw + 17.2px);
   font-weight: 600;
   line-height: 100%;
   letter-spacing: 0.28px;
@@ -28,7 +28,8 @@ h1 {
 
 h2 {
   color: #000;
-  font-size: 22px;
+  font-size: calc(0.3vw + 17.2px);
+  text-align: center;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.22px;
@@ -40,7 +41,7 @@ a {
 }
 
 .container {
-  padding: 0 45px;
+  padding: 0 calc(1.3vw + 21px);
   height: 100%;
   display: flex;
   align-items: center;
@@ -48,7 +49,7 @@ a {
 }
 
 .wrapper {
-  width: 338px;
+  width: 340px;
   margin: 0 auto;
 }
 
@@ -78,7 +79,7 @@ a {
   left: 0;
   bottom: 15px;
   color: #eb5757;
-  font-size: 12px;
+  font-size: calc(0.2vw + 8.4px);
 }
 .input-wrapper._error input {
   color: #eb5757;
@@ -96,7 +97,7 @@ a {
 
 input {
   width: 100%;
-  padding: 12px 0;
+  padding: calc(0.2vw + 8.4px) 0;
   border-bottom: 1px solid #aeb4c2;
 }
 input::-moz-placeholder {
@@ -123,10 +124,10 @@ button {
   cursor: pointer;
   width: 100%;
   border: 2px solid transparent;
-  border-radius: 50px;
+  border-radius: calc(1.6vw + 20px);
   background-color: #a497f9;
   color: white;
-  padding: 22.5px 0;
+  padding: calc(0.6vw + 12.2px) 0;
   transition: 200ms;
 }
 button:disabled {
@@ -149,10 +150,10 @@ button:enabled:active {
 
 .indicator {
   position: fixed;
-  top: 70px;
+  top: calc(1.9vw + 34px);
   left: 50%;
   transform: translateX(-50%);
-  width: 388px;
+  width: calc(6.1vw + 270.4px);
 }
 .indicator__text {
   display: flex;
@@ -165,7 +166,7 @@ button:enabled:active {
   gap: 4px;
 }
 .indicator__unit {
-  height: 8px;
+  height: 7px;
   flex: 1 1 25%;
   border: 1px solid #aeb4c2;
   border-radius: 161px;
@@ -176,30 +177,30 @@ button:enabled:active {
 }
 
 .welcome h1 {
-  margin: 0 0 75px 0;
+  margin: 0 0 calc(2.2vw + 33px) 0;
 }
 .welcome__form label {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: calc(0.2vw + 14.4px);
+  margin-bottom: calc(0.3vw + 5.2px);
 }
 .welcome__form input {
-  font-size: 16px;
-  margin-bottom: 32px;
+  font-size: calc(0.2vw + 12.4px);
+  margin-bottom: calc(0.9vw + 15.2px);
 }
 
 .question h2 {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 .question input[type=text] {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 
 .variants {
   list-style: none;
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 .variants .variant-wrapper:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: calc(0.4vw + 8.8px);
 }
 .variants .variant-wrapper input[type=radio] {
   display: none;
@@ -207,7 +208,7 @@ button:enabled:active {
 .variants .variant-wrapper label {
   cursor: pointer;
   display: block;
-  padding: 12px 16px;
+  padding: calc(0.1vw + 9.6px) calc(0.4vw + 8.8px);
   color: #5a6684;
   border: 2px solid #aeb4c2;
   border-radius: 8px;
@@ -219,18 +220,18 @@ button:enabled:active {
 }
 
 .question h2 {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 .question input[type=text] {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 
 .emoji-variants {
   list-style: none;
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
   display: grid;
   grid-template: repeat(2, 1fr)/repeat(2, 1fr);
-  gap: 16px;
+  gap: calc(0.4vw + 7.6px);
 }
 .emoji-variants .variant-wrapper {
   cursor: pointer;
@@ -241,7 +242,7 @@ button:enabled:active {
 .emoji-variants .variant-wrapper label {
   cursor: pointer;
   display: block;
-  padding: 12px;
+  padding: calc(0.3vw + 6px);
   color: #5a6684;
   border: 2px solid #aeb4c2;
   border-radius: 8px;
@@ -254,7 +255,7 @@ button:enabled:active {
 .emoji-variants .variant-wrapper label img {
   -o-object-fit: cover;
      object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: calc(0.6vw + 8px);
 }
 .emoji-variants .variant-wrapper label p {
   width: 100%;
@@ -265,18 +266,18 @@ button:enabled:active {
 }
 
 .question h2 {
-  margin-bottom: 32px;
+  margin-bottom: calc(1vw + 12.8px);
 }
 .question input[type=text] {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 
 .level-variants {
   list-style: none;
-  margin-bottom: 56px;
+  margin-bottom:calc(1.4vw + 25.6px);
   width: 100%;
   display: flex;
-  gap: 8px;
+  gap: calc(0.3vw + 3.2px);
 }
 .level-variants .variant-wrapper {
   flex: 1 1 20%;
@@ -288,7 +289,7 @@ button:enabled:active {
   cursor: pointer;
   display: block;
   padding: 12px 16px;
-  height: 61px;
+  height: calc(0.7vw + 47.8px);
   color: #5a6684;
   border: 2px solid #aeb4c2;
   border-radius: 8px;
@@ -316,11 +317,11 @@ button:enabled:active {
   text-align: center;
   white-space: nowrap;
   position: absolute;
-  bottom: -30px;
+  bottom: calc(-0.1vw + -27.6px);
   left: 50%;
   transform: translateX(-50%);
   color: #000;
-  font-size: 12px;
+  font-size: calc(0.1vw + 9.6px);
   width: 100%;
 }
 .level-variants .variant-wrapper label[for=variant-1]::after {
@@ -333,18 +334,41 @@ button:enabled:active {
   content: "скорее да";
 }
 
+
+
 .thanks img {
-  width: 160px;
+  width: calc(4.4vw + 76px);
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-  margin: 0 auto 60px;
+  margin: 0 auto calc(1.9vw + 24px);
 }
 .thanks h1 {
-  margin-bottom: 32px;
+  margin-bottom: calc(0.8vw + 17.6px);
 }
 .thanks p {
-  font-size: 18px;
+  font-size: calc(0.3vw + 13.2px);
   text-align: center;
-  margin-bottom: 16px;
-}/*# sourceMappingURL=main.css.map */
+  margin-bottom: calc(0.4vw + 8.8px);
+}
+
+.thanks .infoWrapper {
+  border: 1px solid #8f8f8f8c;;
+  border-radius: calc(0.3vw + 14px);
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 calc(0.6vw + 8px) #8f8f8f;
+}
+
+.thanks .info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thanks .info span {
+  font-size: calc(0.3vw + 13.2px);
+  font-weight: 500;
+  margin-bottom: calc(0.2vw + 5.8px);
+}
+
+/*# sourceMappingURL=main.css.map */
